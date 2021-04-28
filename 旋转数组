@@ -1,14 +1,16 @@
 class Solution {
-    public void rotate(int[] nums, int k) {
-        // k可能大于数组长度，取余
-        k = k%nums.length;
-        for (int j = 0; j < k; j++) {
-            int temp = nums[nums.length-1];
-            for (int i = nums.length - 1; i > 0; i--) {
-                nums[i] = nums[i-1];
-            }
-            nums[0] = temp;
+       public void rotate(int nums[], int k) {
+        int length = nums.length;
+        int temp[] = new int[length];
+        //把原数组值放到一个临时数组中，
+        for (int i = 0; i < length; i++) {
+            temp[i] = nums[i];
+        }
+        //然后在把临时数组的值重新放到原数组，并且往右移动k位
+        for (int i = 0; i < length; i++) {
+            nums[(i + k) % length] = temp[i];
         }
     }
-}
 
+
+}
